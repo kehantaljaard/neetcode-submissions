@@ -1,0 +1,20 @@
+import heapq as h
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        ## Definitions
+        heap = nums[0:k]
+        out = []
+        ## Windows
+        l=0
+        r=k-1
+        h.heapify_max(heap)
+        while r<len(nums)-1:
+            out.append(heap[0])
+            l+=1
+            r+=1
+            h.heappush_max(heap, nums[r])
+        out.append(heap[0])
+        return out
+
+
